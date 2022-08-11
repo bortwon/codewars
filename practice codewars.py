@@ -30,52 +30,9 @@ def get_sum(a,b):
 
 
 def rps(p1, p2):
-    s = 'scissors'
-    p = 'paper'
-    r = 'rock'
-    draw = 'Draw!'
-    p1_w = 'Player 1 won!'
-    p2_w = 'Player 2 won!'
-    if p1 == s:
-        if p2 == s:
-            return draw
-        elif p2 == p:
-            return p1_w
-        else:
-            return p2_w
-    if p1 == p:
-        if p2 == p:
-            return draw
-        elif p2 == r:
-            return p1_w
-        else:
-            return p2_w
-    if p1 == r:
-        if p2 == r:
-            return draw
-        elif p2 == s:
-            return p1_w
-        else:
-            return p2_w
-
-    if p2 == s:
-        if p1 == s:
-            return draw
-        elif p1 == p:
-            return p2_w
-        else:
-            return p1_w
-    if p2 == p:
-        if p1 == p:
-            return draw
-        elif p1 == r:
-            return p2_w
-        else:
-            return p1_w
-    if p2 == r:
-        if p1 == r:
-            return draw
-        elif p1 == s:
-            return p2_w
-        else:
-            return p1_w
+    beats = {'rock': 'scissors', 'scissors': 'paper', 'paper': 'rock'}
+    if beats[p1] == p2:
+        return "Player 1 won!"
+    if beats[p2] == p1:
+        return "Player 2 won!"
+    return "Draw!"
