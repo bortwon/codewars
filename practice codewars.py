@@ -19,4 +19,63 @@ def get_sum(a,b):
     return counter
 
 
+# Rock Paper Scissors
+# Let's play! You have to return which player won! In case of a draw return Draw!.
+#
+# Examples(Input1, Input2 --> Output):
+#
+# "scissors", "paper" --> "Player 1 won!"
+# "scissors", "rock" --> "Player 2 won!"
+# "paper", "paper" --> "Draw!"
 
+
+def rps(p1, p2):
+    s = 'scissors'
+    p = 'paper'
+    r = 'rock'
+    draw = 'Draw!'
+    p1_w = 'Player 1 won!'
+    p2_w = 'Player 2 won!'
+    if p1 == s:
+        if p2 == s:
+            return draw
+        elif p2 == p:
+            return p1_w
+        else:
+            return p2_w
+    if p1 == p:
+        if p2 == p:
+            return draw
+        elif p2 == r:
+            return p1_w
+        else:
+            return p2_w
+    if p1 == r:
+        if p2 == r:
+            return draw
+        elif p2 == s:
+            return p1_w
+        else:
+            return p2_w
+
+    if p2 == s:
+        if p1 == s:
+            return draw
+        elif p1 == p:
+            return p2_w
+        else:
+            return p1_w
+    if p2 == p:
+        if p1 == p:
+            return draw
+        elif p1 == r:
+            return p2_w
+        else:
+            return p1_w
+    if p2 == r:
+        if p1 == r:
+            return draw
+        elif p1 == s:
+            return p2_w
+        else:
+            return p1_w
