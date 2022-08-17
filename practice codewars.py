@@ -263,3 +263,41 @@ def past(h, m, s):
     result = (h * 60 * 60 + m * 60 + s) * 1000
     return result
 
+
+# There is an array with some numbers. All numbers are equal except for one. Try to find it!
+#
+# find_uniq([ 1, 1, 1, 2, 1, 1 ]) == 2
+# find_uniq([ 0, 0, 0.55, 0, 0 ]) == 0.55
+# It’s guaranteed that array contains at least 3 numbers.
+#
+# The tests contain some very huge arrays, so think about performance.
+#
+# This is the first kata in series:
+#
+# Find the unique number (this kata)
+# Find the unique string
+# Find The Unique
+
+
+
+
+def find_uniq(arr):
+    for i in range(len(arr)):
+        if arr[i] == arr[i+1]:
+            continue
+        else:
+            if i == 0 and arr[i] != arr[i + 2]:
+                return arr[i]
+            return arr[i + 1]
+# Time: 1401 ms
+# Completed in 5.25 ms
+
+
+def find_uniq(arr):
+    a, b = set(arr)
+    return a if arr.count(a) == 1 else b
+# Time: 879 ms
+# Completed in 5.06ms
+
+
+
