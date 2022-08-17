@@ -107,3 +107,19 @@ def find_average(numbers):
 def hero(bullets, dragons):
     return True if bullets/2 >= dragons else False
 
+
+
+# Complete the solution so that it reverses the string passed into it.
+#
+# 'world'  =>  'dlrow'
+# 'word'   =>  'drow'
+
+def solution(string):
+    string = list(string)
+    string.reverse()
+    return ''.join(string)
+
+def solution(str):
+    return str[::-1]
+
+
