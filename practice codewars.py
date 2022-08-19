@@ -533,3 +533,13 @@ def DNA_strand(dna):
 pairs = {'A':'T','T':'A','C':'G','G':'C'}
 def DNA_strand(dna):
     return ''.join([pairs[x] for x in dna])
+
+
+
+# 8 kyu
+# Remove String Spaces
+#
+# Simple, remove the spaces from the string, then return the resultant string.
+
+def no_space(x):
+    return x.replace(' ', '')
