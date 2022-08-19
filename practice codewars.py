@@ -454,3 +454,19 @@ def persistence(n):
         n=reduce(operator.mul,[int(x) for x in str(n)],1)
         i+=1
     return i
+
+
+
+# Reversed sequence
+#
+# Build a function that returns an array of integers from n to 1 where n>0.
+#
+# Example : n=5 --> [5,4,3,2,1]
+
+def reverse_seq(n):
+    n = list(reversed(range(1, n + 1)))
+    return n
+
+def reverseseq(n):
+    return list(range(n, 0, -1))
+
