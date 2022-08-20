@@ -711,3 +711,25 @@ def isValidWalk(walk):
 
 def cockroach_speed(s):
     return int(s *100000/3600)
+
+
+
+# 8 kyu
+# If you can't sleep, just count sheep!!
+#
+# If you can't sleep, just count sheep!!
+#
+# Task:
+# Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will
+# always be valid, i.e. no negative integers.
+
+def count_sheep(n):
+    str = ''
+    list = range(1, n + 1)
+    for i in list:
+        str += '{} sheep...'.format(i)
+    return str
+
+def count_sheep(n):
+    return "".join("{} sheep...".format(i) for i in range(1, n+1))
+
