@@ -917,3 +917,43 @@ def double_char(s):
 def double_char(s):
     return ''.join(c * 2 for c in s)
 
+
+
+# 6 kyu
+# Build Tower
+#
+# Build Tower
+# Build a pyramid-shaped tower given a positive integer number of floors. A tower block is represented with "*"
+# character.
+#
+# For example, a tower with 3 floors looks like this:
+#
+# [
+#   "  *  ",
+#   " *** ",
+#   "*****"
+# ]
+# And a tower with 6 floors looks like this:
+#
+# [
+#   "     *     ",
+#   "    ***    ",
+#   "   *****   ",
+#   "  *******  ",
+#   " ********* ",
+#   "***********"
+# ]
+# Go challenge Build Tower Advanced once you have finished this
+# ( https://www.codewars.com/kata/57675f3dedc6f728ee000256 ):)
+
+
+def tower_builder(n_floors):
+    res = []
+    i = 1
+    width = n_floors + (n_floors - 1)
+    for i in range(1, n_floors + 1):
+        res.append("{0:^{1}.{2}}".format("*"*(i+(i-1)), width, width))
+    return res
+
+def tower_builder(n):
+    return [("*" * (i*2-1)).center(n*2-1) for i in range(1, n+1)]
