@@ -957,3 +957,32 @@ def tower_builder(n_floors):
 
 def tower_builder(n):
     return [("*" * (i*2-1)).center(n*2-1) for i in range(1, n+1)]
+
+
+
+# 8 kyu
+# Convert a string to an array
+#
+# Write a function to split a string and convert it into an array of words.
+#
+# Examples (Input ==> Output):
+# "Robin Singh" ==> ["Robin", "Singh"]
+#
+# "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]
+
+def string_to_array(s):
+    list = []
+    word = ''
+    if s == '':
+        return ['']
+    for i in s:
+        if i != ' ':
+            word += i
+        else:
+            list.append(word)
+            word = ''
+    list.append(word)
+    return list
+
+def string_to_array(string):
+    return string.split(" ")
