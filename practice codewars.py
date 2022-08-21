@@ -1066,3 +1066,17 @@ def wave(people):
 
 def wave(str):
     return [str[:i] + str[i].upper() + str[i+1:] for i in range(len(str)) if str[i].isalpha()]
+
+
+
+# 8 kyu
+# Function 3 - multiplying two numbers
+#
+# Implement a function called multiply, which takes two numbers and returns their product:
+#
+# multiply(2, 3) = 6
+# multiply(0, 188) = 0
+# multiply(85, 144) = 12240
+
+def multiply(x, y):
+    return x * y
