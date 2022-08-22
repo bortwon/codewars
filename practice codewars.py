@@ -1171,3 +1171,71 @@ def is_square(n):
         return False
     sqrt = math.sqrt(n)
     return sqrt.is_integer()
+
+
+
+# 6 kyu
+# Your order, please
+#
+# Your task is to sort a given string. Each word in the string will contain a single number. This number is the
+# position the word should have in the result.
+#
+# Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+#
+# If the input string is empty, return an empty string. The words in the input String will only contain valid
+# consecutive numbers.
+#
+# Examples
+# "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+# "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+# ""  -->  ""
+
+
+def order(sentence):
+    count_words = len(sentence.split())
+    list_sentence = list(range(0, count_words))
+    order_str = ''.join(map(str, list(range(1, count_words + 1))))
+    a = sentence.split()
+    for i, val in enumerate(a):
+        for x in val:
+            if x in order_str:
+                list_sentence[int(x) - 1] = val
+            else:
+                continue
+    list_sentence = ' '.join(list_sentence)
+    return list_sentence
+
+
+def order(words):
+    return ' '.join(sorted(words.split(), key=lambda w:sorted(w)))
+# The first number in strings in this list a = ['2is', '1This', '4Test', '3a'] is a very powerful feature for
+# comparison these strings! No matter that '2is shorter than '1This' and '1This' starts with big letter and '2is start
+# with small letter. sorted() function will compare these strings using number 2 and number 1 only becuase they are
+# both at the beginning of the strings (which are in the list)
+#
+# but the problem here is that we can't do it when the numbers are not at the beginning.By the way, the incoming data
+# in this kata is something like this 'ca2da ab1ra b3ra'. See ? Wee need to do something with these numbers! We need
+# to transofrm this 'ca2da ab1ra b3ra' in this ['2cada', '1abra', '3bra'].
+# Now we can use sorted(['2cada', '1abra', '3bra']) and the output will be  ['1abra','2cada', '3bra']
+#
+# just try to do that: a = ['2is', '1This', '4Test', '3a']
+# print(sorted(a))
+# Output: ['1This', '2is', '3a', '4Test']
+#
+# and now let's change the position of numbers in strings! a = ['i2s', 'This1', '4Test', 'a3']
+# print(sorted(a)) Output: ['4Test', 'This1', 'a3', 'i2s']
+#
+# Ok, now the code:
+#
+# for example, the incoming data is 'ca2da Ab1ra b3ra then
+#
+# -----> words.split() -----> ['ca2da', 'Ab1ra', 'b3ra']
+#
+# ----->  key=lambda w:sorted(w)  -----> ['2cada', '1Abra', '3bra'] (Numbers take priority over letters in str type)
+#
+# ----->  sorted(['2cada', '1Abra', '3bra'])  -----> ['1Abra','2cada', '3bra'] Warning ! After comparison the items
+# in the list regain their previous form but now they are sorted
+# so the final result after sorted(['2cada', '1Abra', '3bra']) will be ['Ab1ra', 'ca2da', 'b3ra']
+# Just what we need, right ?
+#
+# and finally -----> ' '.join(['Ab1ra', 'ca2da', 'b3ra']) -----> 'Ab1ra ca2da b3ra'
