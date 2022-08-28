@@ -1485,3 +1485,104 @@ def remove_every_other(my_list):
 
 def longest(s1, s2):
     return "".join(sorted([c for c in set(s1 + s2)]))
+
+
+
+# 6 kyu
+# Simple Encryption #1 - Alternating Split
+#
+# Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed
+# characters of S with all the even-indexed characters of S, this process should be repeated N times.
+#
+# Examples:
+#
+# encrypt("012345", 1)  =>  "135024"
+# encrypt("012345", 2)  =>  "135024"  ->  "304152"
+# encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+#
+# encrypt("01234", 1)  =>  "13024"
+# encrypt("01234", 2)  =>  "13024"  ->  "32104"
+# encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+# Together with the encryption function, you should also implement a decryption function which reverses the process.
+#
+# If the string S is an empty value or the integer N is not positive, return the first argument without changes.
+#
+# This kata is part of the Simple Encryption Series:
+#
+# Simple Encryption #1 - Alternating Split
+# Simple Encryption #2 - Index-Difference
+# Simple Encryption #3 - Turn The Bits Around
+# Simple Encryption #4 - Qwerty
+# Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+def encrypt_once(text):
+    e_str = ""
+    o_str = ""
+
+    for i in range(0, len(text)):
+        if i % 2 != 0:
+            e_str += text[i]
+        else:
+            o_str += text[i]
+
+    return e_str + o_str
+
+
+def encrypt(text, n):
+
+    s = [text]
+    if n <0:
+        return text
+    for i in range(1, n + 1):
+        s.append(encrypt_once(s[i - 1]))
+
+    return s[n]
+
+
+def decrypt_once(text):
+    decry_one = ""
+    decry_two = ""
+
+    mid = int(len(text) / 2)  ##find mid index
+
+    decry_one += text[0:mid]  ## breaks string into two strings
+    decry_two += text[mid:]
+
+    s = ""
+
+    for i in range(0, mid):
+        s += decry_two[i] + decry_one[i]  ## combine alternating even and odd indices
+
+    if len(text) % 2 != 0:
+        s += decry_two[mid]  ## if length is odd , add the last index of decry_two
+
+    return s
+
+
+def decrypt(text, n):
+    s = [text]
+    if n < 0:
+        return text
+    for i in range(1, n + 1):
+        s.append(decrypt_once(s[i - 1]))
+
+    return s[n]
+
+# ___________________________________
+def decrypt(text, n):
+    if text in ("", None):
+        return text
+
+    ndx = len(text) // 2
+
+    for i in range(n):
+        a = text[:ndx]
+        b = text[ndx:]
+        text = "".join(b[i:i + 1] + a[i:i + 1] for i in range(ndx + 1))
+    return text
+
+
+def encrypt(text, n):
+    for i in range(n):
+        text = text[1::2] + text[::2]
+    return text
