@@ -1448,3 +1448,20 @@ def DNAtoRNA(dna):
 
 def paperwork(n, m):
     return n * m if n > 0 and m > 0 else 0
+
+
+
+# 8 kyu
+# Removing Elements
+#
+# Take an array and remove every second element from the array. Always keep the first element and start removing with
+# the next element.
+#
+# Example:
+# ["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+#
+# None of the arrays will be empty, so you don't have to worry about that!
+
+def remove_every_other(my_list):
+    return my_list[::2]
+
