@@ -1752,3 +1752,37 @@ def delete_nth(order,max_e):
 def how_much_i_love_you(nb_petals):
     list = ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly']
     return list[nb_petals % 6]
+
+
+
+# 5 kyu
+# Rot13
+
+# ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the
+# alphabet. ROT13 is an example of the Caesar cipher.
+#
+# Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special
+# characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet
+# should be shifted, like in the original Rot13 "implementation".
+#
+# Please note that using encode is considered cheating.
+
+import string
+def rot13(message):
+    alp_l = list(string.ascii_lowercase)
+    alp_u = list(string.ascii_uppercase)
+    res = ''
+    for i in message:
+        if i.isalpha():
+            if i.isupper():
+                res += alp_u[(alp_u.index(i) + 13) % len(alp_u)]
+            else:
+                res += alp_l[(alp_l.index(i) + 13) % len(alp_l)]
+        else:
+            res += str(i)
+    return res
+
+
+import codecs
+def rot13(message):
+    return codecs.encode(message, 'rot_13')
