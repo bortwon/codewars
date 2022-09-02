@@ -1935,3 +1935,35 @@ def strCount(string, letter):
     return string.count(letter)
 
 
+
+# 6 kyu
+# Highest Scoring Word
+
+# Given a string of words, you need to find the highest scoring word.
+#
+# Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+#
+# You need to return the highest scoring word as a string.
+#
+# If two words score the same, return the word that appears earliest in the original string.
+#
+# All letters will be lowercase and all inputs will be valid.
+
+import string
+
+def high(x):
+    letters = list(string.ascii_lowercase)
+    digits = range(1, len(letters) + 1)
+    score = dict(zip(letters, digits))
+    words = x.split()
+    res = []
+    for i in words:
+        sum = 0
+        for j in i:
+            sum +=  score[j]
+        res.append(sum)
+    ind = res.index(max(res))
+    return words[ind]
+
+def high(x):
+    return max(x.split(), key=lambda k: sum(ord(c) - 96 for c in k))
