@@ -2557,3 +2557,20 @@ class HighScoreTable:
     def reset(self):
         self.scores = []
 
+
+
+# MY TASK
+# Sum 2 numbers equal k.
+
+# Given anarray and a number k. Try to find 2 numbers whose sum equal to k.
+
+def func(arr, k):
+    for i in arr:
+        for j in arr:
+            if i != j:
+                if i + j == k:
+                    return [i, j]
+            else:
+                continue
+    else:
+        return []
