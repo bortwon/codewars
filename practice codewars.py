@@ -2478,3 +2478,82 @@ def sort_by_length(arr):
 
 def sort_by_length(arr):
     return sorted(arr, key=len)
+
+
+# 6 kyu
+# High score table
+
+# You just got done writing a function that calculates the player's final score for your
+# new game, "Flight of the cockatoo".
+#
+# Now all you need is a high score table that can be updated with the player's final scores. With
+# such a feature, the player will be motivated to try to beat his previous scores, and hopefully, never
+# stop playing your game.
+#
+# The high score table will start out empty. A limit to the size of the table will be specified upon
+# creation of the table.
+#
+# Here's an example of the expected behavior of the high score table :
+#
+# highScoreTable = HighScoreTable(3)
+# highScoreTable.scores == [] # evaluates to True
+# highScoreTable.update(10)
+# highScoreTable.scores == [10]
+# highScoreTable.update(8)
+# highScoreTable.update(12)
+# highScoreTable.update(5)
+# highScoreTable.update(10)
+# highScoreTable.scores == [12, 10, 10]
+# highScoreTable.reset()
+# highScoreTable.scores == []
+# # And so on...
+
+# ALGORITHMS SORTING SEARCHING ARRAYS OBJECT-ORIENTED PROGRAMMING
+
+class HighScoreTable:
+
+    def __init__(self, length_size):
+        self.scores = []
+        self.length_size = length_size
+
+    def update(self, x):
+        if len(self.scores) > 0:
+            if x >= max(self.scores):
+                self.scores.insert(0, x)
+            else:
+                self.scores.append(x)
+        elif len(self.scores) == 0:
+            self.scores.append(x)
+        if len(self.scores) > self.length_size:
+            self.scores.remove(min(self.scores))
+        self.scores.sort(reverse=True)
+
+    def reset(self):
+        del self.scores[:]
+
+
+
+class HighScoreTable:
+    def __init__(self, limit):
+        self.__limit__ = limit
+        self.scores = []
+    def update(self, n):
+        self.scores.append(n);
+        self.scores = sorted(self.scores, reverse=True)[:self.__limit__]
+    def reset(self):
+        self.scores = []
+
+
+
+class HighScoreTable:
+
+    def __init__(self, maxlen=3):
+        self._maxlen = maxlen
+        self.reset()
+
+    def update(self, score):
+        self.scores = sorted(self.scores + [score], reverse=True)[:self._maxlen]
+
+    def reset(self):
+        self.scores = []
+
