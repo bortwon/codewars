@@ -2671,3 +2671,119 @@ from itertools import groupby
 def zero_plentiful(arr):
     r = [len(list(g)) > 3 for k, g in groupby(arr) if k == 0]
     return all(r) * len(r)
+
+
+
+# 7 kyu
+# Bubblesort Once
+
+# Bubblesort is an inefficient sorting algorithm that is simple to understand and therefore often taught in
+# introductory computer science courses as an example how not to sort a list. Nevertheless, it is correct in
+# the sense that it eventually produces a sorted version of the original list when executed to completion.
+#
+# At the heart of Bubblesort is what is known as a pass. Let's look at an example at how a pass works.
+#
+# Consider the following list:
+#
+# 9, 7, 5, 3, 1, 2, 4, 6, 8
+# We initiate a pass by comparing the first two elements of the list. Is the first element greater than the second?
+# If so, we swap the two elements. Since 9 is greater than 7 in this case, we swap them to give 7, 9. The list then
+# becomes:
+#
+# 7, 9, 5, 3, 1, 2, 4, 6, 8
+# We then continue the process for the 2nd and 3rd elements, 3rd and 4th elements ... all the way up to the last two
+# elements. When the pass is complete, our list becomes:
+#
+# 7, 5, 3, 1, 2, 4, 6, 8, 9
+# Notice that the largest value 9 "bubbled up" to the end of the list. This is precisely how Bubblesort got its name.
+#
+# Task
+# Given an array of integers, your function bubblesortOnce/bubblesort_once/BubblesortOnce (or equivalent, depending on
+# your language's naming conventions) should return a new array equivalent to performing exactly 1 complete pass on
+# the original array. Your function should be pure, i.e. it should not mutate the input array.
+#
+# ALGORITHMSTUTORIALSSORTING
+
+def bubblesort_once(l):
+    r = [i for i in l]
+    up = True
+    while up:
+        for i in range(len(r) - 1):
+            if r[i] > r[i + 1]:
+                r[i], r[i + 1] = r[i + 1], r[i]
+        up = False
+    return r
+
+def bubblesort_once(l):
+    l = l[:]
+    for i in range(len(l)-1):
+        if l[i] > l[i+1]:
+            l[i], l[i+1] = l[i+1], l[i]
+    return l
+
+
+
+# 7 kyu
+# V A P O R C O D E
+
+# ASC Week 1 Challenge 4 (Medium #1)
+#
+# Write a function that converts any sentence into a V A P O R W A V E sentence. a V A P O R W A V E sentence
+# converts all the letters into uppercase, and adds 2 spaces between each letter (or special character) to create
+# this V A P O R W A V E effect.
+#
+# Note that spaces should be ignored in this case.
+#
+# Examples
+#
+# "Lets go to the movies"       -->  "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+# "Why isn't my code working?"  -->  "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+#
+# FUNDAMENTALS
+
+def vaporcode(s):
+    res = ''
+    s = list(s)
+    for i in s:
+        if i == ' ':
+            continue
+        res += i.upper() + '  '
+    return res[:-2]
+
+def vaporcode(s):
+    res = [i.upper() for i in s if i != ' ']
+    return '  '.join(res)
+
+def vaporcode(s):
+    return "  ".join(s.replace(" ", "").upper())
+
+
+
+# 6 kyu
+# Write Number in Expanded Form
+
+# Write Number in Expanded Form
+# You will be given a number and you will need to return it as a string in Expanded Form. For example:
+#
+# expanded_form(12) # Should return '10 + 2'
+# expanded_form(42) # Should return '40 + 2'
+# expanded_form(70304) # Should return '70000 + 300 + 4'
+# NOTE: All numbers will be whole numbers greater than 0.
+#
+# If you liked this kata, check out part 2!!
+#
+# STRINGS MATHEMATICS ALGORITHMS FUNDAMENTALS
+
+def expanded_form(num):
+    res = []
+    length = len(str(num)) - 1
+    for i in str(num):
+        if i != '0':
+            res.append(i + '0' * length)
+        length -= 1
+    return ' + '.join(res)
+
+
+def expanded_form(num):
+    num = list(str(num))
+    return ' + '.join(x + '0' * (len(num) - y - 1) for y,x in enumerate(num) if x != '0')
